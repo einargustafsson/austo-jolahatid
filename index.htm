@@ -3,6 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Austó jóló</title>
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
         function copyKassAur() {
             // Get the text field
@@ -29,6 +30,14 @@
             navigator.clipboard.writeText(copyText.value);
 
         }
+
+        function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+        }
     </script>
     <style>
         .container {
@@ -49,25 +58,20 @@
         <h2>Greiðslumöguleikar</h2>
         
         <div class="options">
-            <img src="aur.png" onclick="copyKassAur()">
-            <img src="kass.png" onclick="copyKassAur()"> 
-            <input type="text" value="8581884" id="aurkass" />
-            <button onclick="copyKassAur()">Afrita</button>
+            <img src="aur.png" onclick="copyToClipboard('#aurkass')">
+            <img src="kass.png" onclick="copyToClipboard('#aurkass')">
+            <p id="aurkass">8581884</p>
+            <button onclick="copyToClipboard('#aurkass')">Afrita</button>
         </div>
         <div class="options">
-            <img src="isb.png" onclick="copyBanki()">
-            <img src="arion.png" onclick="copyBanki()">
-            <img src="landsbanki.png" onclick="copyBanki()">
-            <input type="text" value="515-26-1108 / kt: 110879-3269" id="banki">
-            <button onclick="copyBanki()">Afrita</button>
+            <img src="isb.png" onclick="copyToClipboard('#banki')">
+            <img src="arion.png" onclick="copyToClipboard('#banki')">
+            <img src="landsbanki.png" onclick="copyToClipboard('#banki')">
+            <p id="banki">515-26-1108 / kt: 110879-3269</p>
+            <button onclick="copyToClipboard('#banki')">Afrita</button>
             
         </div>
     </div>
-
-    <!-- The text field -->
-
-
-<!-- The button used to copy the text -->
 
 
 </body>
